@@ -1,0 +1,108 @@
+Git is a recipe or procedure of doing the task.
+
+From Terminal
+mkdir folder name - creating a folder
+cd folder name - moving to that directory.
+git clone repo url - to clone the github repo to that directory.
+
+git init :- initializes the git (empty) repository.
+git add filename to move files working directory to staging area.
+git commit is used to save the changes to local repo. git commit -m is for saving + saving a message. Here files moves from staging area to local repo.
+for multi line message in git commit command, then just type "git commit" and it will directly open your default browser, then you can save the multiline comment.
+
+git status to check the origin or branch we are currently on.
+
+Better Practice is to pull from repo before pushing so that we can reduce the merge confiicts in the future.
+
+git pull - to pull from remote repo.
+git push - to upload local repo to remote repo. "git push origin main" :- pushing to remo repo origin, from local repo main.
+
+Token generation can be done from settings of github.
+
+if git is not initialized then if you run git status then it will show error only, after initializing it will show untracked files.
+
+PART 2
+
+git fork :- used to create copy of repo that you manage. it helps make changes to project without affecting the original repo.
+
+we can create heirarchical directories like :- mkdir -p level1/level2/level3 , and i can directly write by using echo "Text message" >> path/filename.
+
+git ls-files shows all added (tracked) files by git.
+
+To add and commit together we use git commit -am "message"  , works only for tracked files. 
+
+git add . :- adds all the files of the heirarchy, that means if some files are in nested directories than they all will be added too.
+
+git restore --staged filename will unstag the file(untrack).
+
+git mv oldfilename newfilename, can be used to rename the files in same working directory. To particularly move the files from one directory to another we can mention the path or other directory where it have to be moved. 
+
+mv 1stfilename 2ndfilename while delete one file and create another file with 2ndfilename.
+
+git rm to remove the file from the lcoal directory.
+
+git log for the history of changes. shows author and date with commit id.
+git log--oneline --graph --decorate
+git log "commit id"
+git log --since="2 days ago"
+git log --nova-compute.log
+git log --abbrev-commit
+git show "commit id"
+
+git alias is pwerful workflow tool to create shortcuts to frequently use git commands.
+git config --global alias.name "command"
+can check in global list.
+
+git ignore files to ensure that certain files are not tracked by git remaining untracked. 
+Add a .gitignore file and mention the files in it, it also catches the patterns of files like if files are one, one1, one2 so you can only mention one*, and it will track all the files.
+
+git diff command helps to see, compare, understand changes in project. ex to loot at current changes in your working copy, past changes in commit, or even to compare branches.
+git diff HEAD used to view difference btw last commit of git repo and working directory.
+git diff --cached HEAD , compares staging area to local repo.
+git diff --"filename" to limit comparisions to just single file, instead of all.
+git diff "1stcommitId" "2ndcommitId"  , to show difference between two particular commits.
+git diff master origin/master, Difference between Master and Origin Master? -> To See difference between local and remote master branches.
+
+There are many files containing sensitive information of employees like username and passwords with a local git repo. All Such files are stored with .ini format. So that we can directly add *ini in .gitignore files, and it will ignore all the sensitive files.
+
+BRANCHES
+For Parallel working without conflict. It is simply a lightweight movable pointer to these commits. The default branch in master, it keeps will always be the last commit you made, master branch pointer automatically moves forward.
+
+git branch :- list all branches (local)
+git branch <branch name> :- creates new branch called <branch name> but dones not checks out the new branch. ( Doesn't switch to new branch ).
+git branch -d <branch> :- deletes a branch, if there are unmerged changes git will not allow you to delete that branch.
+git branch -D <branch> :- to Delete Forcefully.
+git branch -m <branch> :- moves or rename the current branch to <branch>.
+git branch -a :- list all the remote branches.
+git checkout -b <branch> :- creates a new branch called <branch> and does checks out the <branch> (switch to new branch)
+
+git merge "branch name" :- Here we will merger "branch name" to the current working branch.
+
+Before doing the git merge we should make the clean working directory by pushing everything.
+
+Git Merge (Fast Forward) :- Commit Messages of another branch will behave or work as they are of main branch.
+git merge --no-ff :- (no fast forward) commit message of feature branch will behave as feature branch only.
+
+When Conflicts Occur :- when two seprate branches have made edits to the same line or file, or when one branch deleted a file and other branch edited the same file, then conflicts occur. Generally in Team Enviroment.
+
+How to avoid chances of merge conflicts while working on a big project (25 - 100) members production project?
+==> 1. Always Pull before work or Push
+2. Working on Different branches
+
+REBASING
+It changes the base of the developer's branch from one commit to another, so it looks like they have created their branch from different commit.
+It replays changes from one line of work onto another in the order they were introduced.
+Conflicts can happen in rebase also.
+command used :- git rebase <main>
+
+STASHING
+It takes your uncommited changes, saves them away for later use, and then revert them from your working copy. Use it when you want to record the current state of the working directory and the index, but want to go back to a clean working directory.
+git stash :- Move the uncommited files to stashed area.
+git stash apply :- Stashed file will be back to our working directory.
+git stash list :- It will show all the Stashed filed ( both stashed and working directory file previously stashed ).
+git stash drop :- To Empty or drop the stash container.	
+
+Pull Request :- To merge the branches, we create pull requests, so the reviewers may review our code and if their are no bugs then can allow to merge.
+
+What is covered?
+Initialize a directory, create repo, change default branch, what are branches, how to move files btw working directory, staging area, local repo, remote repo, how to revert them back, how to do a merge, how to see difference among all of them, how to solve merge conflict, rebase, rebase conflicts, importance of stash, git commands :- rm, cd, .gitignore files.
